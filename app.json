@@ -7,6 +7,11 @@
     "icon": "./assets/images/icon.png",
     "scheme": "hotelist",
     "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#5672bc"
+    },
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
@@ -14,8 +19,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#5672bc"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.app.hotelist"
@@ -30,10 +35,10 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/images/icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#5672bc"
         }
       ]
     ],

@@ -1,3 +1,4 @@
+import type { HotelCardItem } from "@/src/modules/hotels/domain/entities/HotelCardItem";
 import { GetHotelsUseCase } from "@/src/modules/hotels/usecases/GetHotelsUseCase";
 import { useQuery } from "@tanstack/react-query";
 import { QueryConfig } from "../../QueryConfig";
@@ -18,11 +19,16 @@ export const useGetHotelsQuery = () => {
 		gcTime: QueryConfig.gcTime,
 		select: (data) => ({
 			hotelList: data,
-			cardList: data.map((hotel) => ({
-				id: hotel.id,
-				name: hotel.name,
-				price: hotel.price,
-			})),
+			cardList: data.map(
+				(hotel): HotelCardItem => ({
+					id: hotel.id,
+					name: hotel.name,
+					city: hotel.location.city,
+					stars: hotel.stars,
+					price: hotel.price,
+					image: hotel.gallery[0],
+				}),
+			),
 			selectHotelById: (id: number) => {
 				return data.find((hotel) => hotel.id === id);
 			},

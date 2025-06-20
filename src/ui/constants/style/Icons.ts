@@ -5,4 +5,6 @@ export const Icons = {
 	euro: "euro",
 	search: "search",
 	options: "options",
+	sad: "sad",
+	close: "close-a",
 } as const;

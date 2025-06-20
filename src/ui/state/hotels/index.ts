@@ -1,0 +1,1 @@
+export { useHotelsState } from "./useHotelsState";

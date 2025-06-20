@@ -1,28 +1,28 @@
 export const Colors = {
 	alpha: {
-		default: "#C2DFFF",
-		hover: "#A9C8F0",
-		disabled: "#E3ECF8",
+		default: "#5672bc",
+		hover: "#7A8FD1",
+		disabled: "#B8C4E3",
 	},
 	beta: {
-		default: "#FFE2A1",
-		hover: "#FFD385",
-		disabled: "#F6E8C7",
+		default: "#BFFFBC",
+		hover: "#D4FFD1",
+		disabled: "#E8FFE6",
 	},
 	gamma: {
-		default: "#B7B7FF",
-		hover: "#9E9EFF",
-		disabled: "#D7D7F5",
+		default: "#FDCA40",
+		hover: "#FDD666",
+		disabled: "#FEE4A3",
 	},
 	delta: {
-		default: "#D8E9AE",
-		hover: "#C6DB94",
-		disabled: "#E7F1D2",
+		default: "#E87461",
+		hover: "#ED8A7A",
+		disabled: "#F2B0A5",
 	},
 	black: {
 		default: "#1A1A1A",
-		hover: "#1A1A1A",
-		disabled: "#B8B5B1",
+		hover: "#8a8888",
+		disabled: "#e8e8e8",
 	},
 	white: {
 		default: "#FFFFFF",

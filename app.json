@@ -4,9 +4,14 @@
     "slug": "hotelist",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./src/ui/assets/images/icon.png",
     "scheme": "hotelist",
     "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./src/ui/assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#5672bc"
+    },
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
@@ -14,8 +19,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./src/ui/assets/images/icon.png",
+        "backgroundColor": "#5672bc"
       },
       "edgeToEdgeEnabled": true,
       "package": "com.app.hotelist"
@@ -23,17 +28,18 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./src/ui/assets/images/favicon.png"
     },
     "plugins": [
       "expo-router",
+      "expo-font",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./src/ui/assets/images/icon.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#5672bc"
         }
       ]
     ],

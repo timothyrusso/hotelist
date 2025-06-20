@@ -3,4 +3,6 @@ export const Icons = {
 	hotel: "hotel",
 	location: "location-sharp",
 	euro: "euro",
+	search: "search",
+	options: "options",
 } as const;

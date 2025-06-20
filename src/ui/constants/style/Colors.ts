@@ -22,7 +22,7 @@ export const Colors = {
 	black: {
 		default: "#1A1A1A",
 		hover: "#8a8888",
-		disabled: "#B8B5B1",
+		disabled: "#e8e8e8",
 	},
 	white: {
 		default: "#FFFFFF",

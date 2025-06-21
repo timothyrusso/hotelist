@@ -7,15 +7,20 @@ type BasicViewProps = {
 	children: ReactElement;
 	statusBarStyle?: "light" | "dark";
 	isFullScreen?: boolean;
+	nameView: string;
 };
 
 export const BasicView: FC<BasicViewProps> = ({
 	children,
 	statusBarStyle = "dark",
 	isFullScreen = false,
+	nameView,
 }) => {
 	const { basicViewStyle } = useBasicViewLogic(isFullScreen);
 	const Container = isFullScreen ? View : SafeAreaView;
+
+	// Analyze ri-renders
+	console.log(`----------${nameView}---------`);
 
 	return (
 		<Container style={basicViewStyle.containerViewStyle}>

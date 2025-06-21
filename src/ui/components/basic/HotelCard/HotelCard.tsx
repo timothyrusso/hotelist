@@ -2,6 +2,7 @@ import type { HotelCardItem } from "@/src/modules/hotels/domain/entities/HotelCa
 import { Colors } from "@/src/ui/constants/style/Colors";
 import { Icons } from "@/src/ui/constants/style/Icons";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
+import Entypo from "@expo/vector-icons/Entypo";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import type { FC } from "react";
@@ -17,6 +18,9 @@ export const HotelCard: FC<HotelCardProps> = ({
 	hotel: { image, name, city, price, stars },
 }) => {
 	const { imageError, handleImageError } = useHotelCardLogic();
+
+	// Analyze ri-renders
+	console.log("----------Hotel Card---------", name);
 
 	return (
 		<View style={styles.container}>
@@ -41,7 +45,7 @@ export const HotelCard: FC<HotelCardProps> = ({
 						<Fontisto
 							name={Icons.star}
 							size={Spacing.Double}
-							color={Colors.alpha.default}
+							color={Colors.white.default}
 						/>
 						<Text style={styles.stars}>{stars}</Text>
 					</View>
@@ -66,6 +70,12 @@ export const HotelCard: FC<HotelCardProps> = ({
 					<Text style={styles.city}>{city}</Text>
 				</View>
 			</View>
+			<Entypo
+				name={Icons.chevronRight}
+				size={Spacing.Fourfold}
+				style={styles.chevron}
+				color={Colors.alpha.default}
+			/>
 		</View>
 	);
 };

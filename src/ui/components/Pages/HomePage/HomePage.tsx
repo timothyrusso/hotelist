@@ -1,10 +1,11 @@
 import type { HotelCardItem } from "@/src/modules/hotels/domain/entities/HotelCardItem";
 import { BasicView } from "@/src/ui/components/basic/BasicView/BasicView";
-import { useHotelsState } from "@/src/ui/state/hotels";
+import { Screens } from "@/src/ui/constants/navigation/Routes";
 import { FlatList, View } from "react-native";
 import { EmptyList } from "../../basic/EmptyList/EmptyList";
 import { HotelCard } from "../../basic/HotelCard/HotelCard";
 import { HomePageListHeader } from "../../composite/HomePageListHeader/HomePageListHeader";
+import { useHomePageLogic } from "./HomePage.logic";
 import { styles } from "./HomePage.style";
 
 const Separator = () => <View style={styles.separator} />;
@@ -14,12 +15,10 @@ const RenderItem = ({ item }: { item: HotelCardItem }) => {
 };
 
 export const HomePage = () => {
-	const { hotelsSelectors } = useHotelsState();
-
-	const hotelsList = hotelsSelectors.hotelsList();
+	const { hotelsList, showEmptyList } = useHomePageLogic();
 
 	return (
-		<BasicView isFullScreen statusBarStyle="dark">
+		<BasicView isFullScreen statusBarStyle="dark" nameView={Screens.Home}>
 			<FlatList
 				data={hotelsList}
 				renderItem={RenderItem}
@@ -27,7 +26,7 @@ export const HomePage = () => {
 				contentContainerStyle={styles.listContentContainer}
 				style={styles.listContainer}
 				ListHeaderComponent={<HomePageListHeader />}
-				ListEmptyComponent={<EmptyList />}
+				ListEmptyComponent={<EmptyList showEmptyList={showEmptyList} />}
 			/>
 		</BasicView>
 	);

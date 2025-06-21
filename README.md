@@ -1,3 +1,25 @@
+<div align="center">
+        <img src="./src/ui/assets/images/icon.png" width="94" height="94" alt="HolidAI Icon" style="border-radius: 50%;">
+    <h1>
+            hotelist
+    </h1>
+</div>
+
+hotelist is a simple and responsive mobile application built with Expo and React Native that allows users to browse, search, and view details of hotels from a remote API.
+
+## Features
+
+- 🔍 **Search & Filter** – Find hotels by name, location, or custom filters such as price range, rating, or amenities.
+- 📋 **Hotel List** – View a scrollable list of available hotels with brief info such as name, image, price, location and rating.
+- 🧭 **Hotel Details** – Tap on a hotel to see full details including description, photos, location, and available features.
+- ⚡️ **Optimized UI** – Clean and lightweight UI built with performance and usability in mind.
+
+## Tech Stack
+
+- **Frontend**: [React Native with Expo](https://github.com/expo/expo)
+- **Client State Management**: [Zustand](https://github.com/pmndrs/zustand)
+- **Caching and Server State Management**: [Tanstack Query](https://github.com/TanStack/query)
+
 # Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).

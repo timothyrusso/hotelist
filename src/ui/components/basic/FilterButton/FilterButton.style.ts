@@ -11,8 +11,8 @@ export const styles = StyleSheet.create({
 		borderRadius: Spacing.Quintuple,
 		padding: Spacing.Single,
 		alignSelf: "flex-end",
-		height: Spacing.separator40,
-		width: Spacing.separator40,
+		height: Spacing.Sextuple,
+		width: Spacing.Sextuple,
 	},
 	pressed: {
 		opacity: Opacity.default,

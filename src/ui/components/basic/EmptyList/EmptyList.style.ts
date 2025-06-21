@@ -1,4 +1,4 @@
-import { fonts } from "@/src/ui/constants/style/fonts";
+import { Fonts } from "@/src/ui/constants/style/Fonts";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";
 
@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
 	},
 	text: {
 		fontSize: Spacing.Triple,
-		fontFamily: fonts.interMedium,
+		fontFamily: Fonts.interMedium,
+		textAlign: "center",
 	},
 });

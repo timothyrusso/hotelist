@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
 		width: "100%",
 	},
 	input: {
-		height: Spacing.separator40,
+		height: Spacing.Sextuple,
 		borderWidth: 2,
 		borderColor: Colors.alpha.default,
 		borderRadius: Spacing.Double,
@@ -18,6 +18,6 @@ export const styles = StyleSheet.create({
 	icon: {
 		position: "absolute",
 		right: Spacing.Double,
-		top: Spacing.Double,
+		top: Spacing.Triple,
 	},
 });

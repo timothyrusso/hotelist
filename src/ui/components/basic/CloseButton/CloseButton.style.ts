@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
 	container: {
 		position: "absolute",
 		right: Spacing.Double + Spacing.Minimal,
-		top: Spacing.Double + Spacing.Minimal,
+		top: Spacing.Triple + Spacing.Minimal,
 	},
 	pressed: {
 		opacity: Opacity.default,

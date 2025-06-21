@@ -7,4 +7,5 @@ export const Icons = {
 	options: "options",
 	sad: "sad",
 	close: "close-a",
+	chevronRight: "chevron-right",
 } as const;

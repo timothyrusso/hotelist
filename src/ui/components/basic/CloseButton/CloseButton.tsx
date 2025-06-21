@@ -14,6 +14,7 @@ export const CloseButton: FC<CloseButtonProps> = ({ onPress }) => {
 		<Pressable
 			style={({ pressed }) => [styles.container, pressed && styles.pressed]}
 			onPress={onPress}
+			hitSlop={Spacing.MinimalDouble}
 		>
 			<Fontisto name={Icons.close} size={Spacing.Double} />
 		</Pressable>

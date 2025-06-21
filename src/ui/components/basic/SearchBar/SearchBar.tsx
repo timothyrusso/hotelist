@@ -1,4 +1,5 @@
 import { en } from "@/src/modules/localization/locales/en";
+import { Colors } from "@/src/ui/constants/style/Colors";
 import { Icons } from "@/src/ui/constants/style/Icons";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import Fontisto from "@expo/vector-icons/Fontisto";
@@ -15,6 +16,7 @@ export const SearchBar = () => {
 			<TextInput
 				style={styles.input}
 				placeholder={en.home_page.find_hotel}
+				placeholderTextColor={Colors.black.hover}
 				onChangeText={handleChangeText}
 				value={searchText}
 			/>

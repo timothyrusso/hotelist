@@ -1,7 +1,7 @@
 import { Platforms } from "@/src/ui/constants/platform/Platforms";
 import { Colors } from "@/src/ui/constants/style/Colors";
 import { Components } from "@/src/ui/constants/style/Components";
-import { fonts } from "@/src/ui/constants/style/fonts";
+import { Fonts } from "@/src/ui/constants/style/Fonts";
 import { Shadows } from "@/src/ui/constants/style/Shadows";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";
@@ -30,11 +30,11 @@ export const styles = StyleSheet.create({
 	},
 	stars: {
 		fontSize: Spacing.Double,
-		fontFamily: fonts.interMedium,
+		fontFamily: Fonts.interBold,
 	},
 	price: {
 		fontSize: Spacing.Triple - Spacing.Minimal,
-		fontFamily: fonts.interBold,
+		fontFamily: Fonts.interBold,
 		bottom: Platforms.Android ? 0.6 : 0,
 	},
 	starsContainer: {
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
 		alignItems: "center",
 		gap: Spacing.MinimalDouble,
 		backgroundColor: Colors.gamma.default,
-		paddingHorizontal: Spacing.MinimalDouble,
+		paddingHorizontal: Spacing.Single,
 		paddingVertical: Spacing.Minimal,
 		borderRadius: Spacing.Double,
 	},
@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
 	headerContainer: {
 		flexDirection: "row",
 		alignItems: "center",
-		justifyContent: "space-between",
+		columnGap: Spacing.Double,
 	},
 	contentContainer: {
 		flex: 1,
@@ -66,7 +66,7 @@ export const styles = StyleSheet.create({
 	},
 	name: {
 		fontSize: Spacing.Triple,
-		fontFamily: fonts.interBold,
+		fontFamily: Fonts.interBold,
 		width: "80%",
 	},
 	cityContainer: {
@@ -77,8 +77,13 @@ export const styles = StyleSheet.create({
 	},
 	city: {
 		fontSize: Spacing.Double,
-		fontFamily: fonts.interMedium,
+		fontFamily: Fonts.interMedium,
 		color: Colors.black.hover,
 		width: "100%",
+	},
+	chevron: {
+		position: "absolute",
+		right: Spacing.Double,
+		alignSelf: "center",
 	},
 });

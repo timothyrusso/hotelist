@@ -1,4 +1,5 @@
 import { Components } from "@/src/ui/constants/style/Components";
+import { Opacity } from "@/src/ui/constants/style/Opacity";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";
 
@@ -13,5 +14,8 @@ export const styles = StyleSheet.create({
 	},
 	separator: {
 		width: Spacing.Double,
+	},
+	imagePressed: {
+		opacity: Opacity.default,
 	},
 });

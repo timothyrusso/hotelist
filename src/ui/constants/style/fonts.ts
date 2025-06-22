@@ -1,7 +1,7 @@
 export const Fonts = {
-	interRegular: "inter-regular",
-	interMedium: "inter-medium",
 	interBold: "inter-bold",
+	interMedium: "inter-medium",
+	interRegular: "inter-regular",
 } as const;
 
 export const fontsConfig = {

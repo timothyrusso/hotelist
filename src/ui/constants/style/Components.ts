@@ -4,4 +4,9 @@ export const Components = {
 			width: 100,
 		},
 	},
+	hotelDetailsPage: {
+		image: {
+			height: 300,
+		},
+	},
 };

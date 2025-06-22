@@ -10,4 +10,11 @@ export const Icons = {
 	chevronRight: "chevron-right",
 	filter: "filter",
 	list: "list-2",
+	angleLeft: "angle-left",
+	mapMarker: "map-marker-alt",
+	clock: "clock",
+	email: "email",
+	phone: "phone",
+	headphone: "headphone",
+	picture: "picture",
 } as const;

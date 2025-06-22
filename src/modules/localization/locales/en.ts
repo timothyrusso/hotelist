@@ -20,7 +20,7 @@ export const en = {
 	},
 	hotel_details_page: {
 		night: "night",
-		users_rating: "Users Rating",
+		users_rating: "Rating",
 		check_in_out: "Check-in & Check-out",
 		check_in: "Check-in",
 		check_out: "Check-out",

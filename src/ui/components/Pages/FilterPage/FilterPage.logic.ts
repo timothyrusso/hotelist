@@ -4,11 +4,15 @@ import { useFiltersState } from "@/src/ui/state/filters";
 import type { OrderByKeysType } from "@/src/ui/state/filters/types";
 import { useHotelsState } from "@/src/ui/state/hotels";
 import { router } from "expo-router";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { styles as filterPageStyles } from "./FilterPage.style";
 
 export const useFilterPageLogic = () => {
 	const { hotelsData, getCardList, refetch } = useGetHotelsQuery();
 	const { filtersActions, filtersSelectors } = useFiltersState();
 	const { hotelsActions } = useHotelsState();
+
+	const { bottom } = useSafeAreaInsets();
 
 	const availableStars = hotelsData?.availableStars || [];
 	const filteredStars = filtersSelectors.stars();
@@ -69,6 +73,8 @@ export const useFilterPageLogic = () => {
 		router.back();
 	};
 
+	const styles = filterPageStyles(bottom);
+
 	return {
 		availableStars,
 		handleStarsPress,
@@ -78,5 +84,6 @@ export const useFilterPageLogic = () => {
 		applyFilters,
 		selectedOrderBy,
 		handleOrderByPress,
+		styles,
 	};
 };

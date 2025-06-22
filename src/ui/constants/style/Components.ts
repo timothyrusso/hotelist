@@ -8,5 +8,10 @@ export const Components = {
 		image: {
 			height: 300,
 		},
+		gallery: {
+			image: {
+				width: 150,
+			},
+		},
 	},
 };

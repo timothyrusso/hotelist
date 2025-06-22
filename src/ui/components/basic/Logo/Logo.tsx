@@ -1,5 +1,6 @@
 import { en } from "@/src/modules/localization/locales/en";
-import { Image, Text, View } from "react-native";
+import { Image } from "expo-image";
+import { Text, View } from "react-native";
 import { styles } from "./Logo.style";
 
 export const Logo = () => {

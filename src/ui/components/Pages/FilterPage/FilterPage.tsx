@@ -14,7 +14,6 @@ import {
 import { FilterItem } from "../../composite/FilterItem/FilterItem";
 import { OrderByItem } from "../../composite/OrderByItem/OrderByItem";
 import { useFilterPageLogic } from "./FilterPage.logic";
-import { styles } from "./FilterPage.style";
 
 export const FilterPage = () => {
 	const {
@@ -26,6 +25,7 @@ export const FilterPage = () => {
 		applyFilters,
 		selectedOrderBy,
 		handleOrderByPress,
+		styles,
 	} = useFilterPageLogic();
 
 	return (

@@ -1,15 +1,19 @@
+import type { HotelCardItem } from "@/src/modules/hotels/domain/entities/HotelCardItem";
 import { useGetHotelsQuery } from "@/src/ui/query/hotels/queries/useGetHotelsQuery";
 import { useFiltersState } from "@/src/ui/state/filters";
+import type { OrderByKeysType } from "@/src/ui/state/filters/types";
 import { useHotelsState } from "@/src/ui/state/hotels";
 import { router } from "expo-router";
 
 export const useFilterPageLogic = () => {
-	const { hotelsData } = useGetHotelsQuery();
+	const { hotelsData, getCardList } = useGetHotelsQuery();
 	const { filtersActions, filtersSelectors } = useFiltersState();
 	const { hotelsActions } = useHotelsState();
 
 	const availableStars = hotelsData?.availableStars || [];
 	const filteredStars = filtersSelectors.stars();
+
+	const selectedOrderBy = filtersSelectors.selectedOrderBy();
 
 	const handleStarsPress = (value: string | number) => {
 		if (filteredStars.includes(Number(value))) {
@@ -20,6 +24,21 @@ export const useFilterPageLogic = () => {
 		} else {
 			const updatedFilteredStars = [...filteredStars, value];
 			filtersActions.setStars(updatedFilteredStars as number[]);
+		}
+	};
+
+	const handleOrderByPress = (value: OrderByKeysType) => {
+		let updatedHotelList: HotelCardItem[];
+
+		if (selectedOrderBy === value) {
+			filtersActions.setSelectedOrderBy("");
+			updatedHotelList = hotelsData?.cardList || [];
+			hotelsActions.setHotelsList(updatedHotelList);
+		} else {
+			filtersActions.setSelectedOrderBy(value);
+			const sortedHotels = hotelsData?.orderByKeys(value) || [];
+			updatedHotelList = getCardList(sortedHotels);
+			hotelsActions.setHotelsList(updatedHotelList);
 		}
 	};
 
@@ -55,5 +74,7 @@ export const useFilterPageLogic = () => {
 		stars: filteredStars,
 		resetFilters,
 		applyFilters,
+		selectedOrderBy,
+		handleOrderByPress,
 	};
 };

@@ -1,15 +1,15 @@
+import type { OrderByKeysType } from "@/src/ui/state/filters/types";
 import type { FC } from "react";
 import { Pressable, Text } from "react-native";
 import type { FontistoName } from "../FilterTitle/FilterTitle";
 import { StarsList } from "../StarsList/StarsList";
 import { useFilterChipLogic } from "./FilterChip.logic";
-import { styles } from "./FilterChip.style";
 
 type FilterChipProps = {
 	value: string | number;
 	icon?: FontistoName;
 	onPress: (value: string | number) => void;
-	selectedData: string[] | number[];
+	selectedData: string[] | number[] | OrderByKeysType;
 };
 
 export const FilterChip: FC<FilterChipProps> = ({
@@ -18,8 +18,11 @@ export const FilterChip: FC<FilterChipProps> = ({
 	onPress,
 	selectedData,
 }) => {
-	const { onChipPress, isSelected } = useFilterChipLogic(onPress, selectedData);
-	const selected = isSelected(value);
+	const { onChipPress, styles, selected } = useFilterChipLogic(
+		onPress,
+		selectedData,
+		value,
+	);
 
 	return (
 		<Pressable

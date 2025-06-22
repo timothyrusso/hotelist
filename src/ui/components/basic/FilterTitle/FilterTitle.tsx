@@ -10,16 +10,17 @@ export type FontistoName = keyof typeof Fontisto.glyphMap;
 type FilterTitleProps = {
 	icon: FontistoName;
 	title: string;
+	iconSize?: number;
 };
 
-export const FilterTitle: FC<FilterTitleProps> = ({ icon, title }) => {
+export const FilterTitle: FC<FilterTitleProps> = ({
+	icon,
+	title,
+	iconSize = Spacing.Triple,
+}) => {
 	return (
 		<View style={styles.container}>
-			<Fontisto
-				name={icon}
-				size={Spacing.Triple}
-				color={Colors.alpha.default}
-			/>
+			<Fontisto name={icon} size={iconSize} color={Colors.alpha.default} />
 			<Text style={styles.title}>{title}</Text>
 		</View>
 	);

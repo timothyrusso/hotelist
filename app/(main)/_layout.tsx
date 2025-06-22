@@ -6,6 +6,7 @@ export default function MainLayout() {
 	return (
 		<Stack screenOptions={ScreenOptions}>
 			<Stack.Screen name={Screens.Home} />
+			<Stack.Screen name={Screens.Filter} options={{ presentation: "modal" }} />
 		</Stack>
 	);
 }

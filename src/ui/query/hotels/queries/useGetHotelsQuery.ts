@@ -32,6 +32,9 @@ export const useGetHotelsQuery = () => {
 			selectHotelById: (id: number) => {
 				return data.find((hotel) => hotel.id === id);
 			},
+			availableStars: Array.from(
+				new Set(data.map((hotel) => hotel.stars)),
+			).sort((a, b) => a - b),
 		}),
 	});
 

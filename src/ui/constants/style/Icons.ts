@@ -8,4 +8,5 @@ export const Icons = {
 	sad: "sad",
 	close: "close-a",
 	chevronRight: "chevron-right",
+	filter: "filter",
 } as const;

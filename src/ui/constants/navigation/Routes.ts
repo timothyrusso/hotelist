@@ -4,4 +4,5 @@ export const Stacks = {
 
 export const Screens = {
 	Home: "index",
+	Filter: "filter",
 } as const;

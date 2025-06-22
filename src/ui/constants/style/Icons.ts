@@ -5,4 +5,9 @@ export const Icons = {
 	euro: "euro",
 	search: "search",
 	options: "options",
+	sad: "sad",
+	close: "close-a",
+	chevronRight: "chevron-right",
+	filter: "filter",
+	list: "list-2",
 } as const;

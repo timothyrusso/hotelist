@@ -8,16 +8,21 @@ export const styles = StyleSheet.create({
 		width: "100%",
 	},
 	input: {
-		height: Spacing.separator40,
+		height: Spacing.Sextuple,
 		borderWidth: 2,
 		borderColor: Colors.alpha.default,
-		borderRadius: Spacing.Double,
-		paddingHorizontal: Spacing.Double,
-		paddingRight: Spacing.Quintuple,
+		borderRadius: Spacing.Sextuple,
+		paddingRight: Spacing.Triple,
+		paddingLeft: Spacing.Quintuple + Spacing.Single,
 	},
 	icon: {
 		position: "absolute",
-		right: Spacing.Double,
-		top: Spacing.Double,
+		left: Spacing.Triple,
+		top: Spacing.Triple,
+	},
+	closeButton: {
+		position: "absolute",
+		left: Spacing.Triple,
+		top: Spacing.Triple + Spacing.Minimal,
 	},
 });

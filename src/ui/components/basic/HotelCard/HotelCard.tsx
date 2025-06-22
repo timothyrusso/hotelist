@@ -7,6 +7,7 @@ import Fontisto from "@expo/vector-icons/Fontisto";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import type { FC } from "react";
 import { Image, Text, View } from "react-native";
+import { StarsList } from "../StarsList/StarsList";
 import { useHotelCardLogic } from "./HotelCard.logic";
 import { styles } from "./HotelCard.style";
 
@@ -41,14 +42,7 @@ export const HotelCard: FC<HotelCardProps> = ({
 			)}
 			<View style={styles.contentContainer}>
 				<View style={styles.headerContainer}>
-					<View style={styles.starsContainer}>
-						<Fontisto
-							name={Icons.star}
-							size={Spacing.Double}
-							color={Colors.white.default}
-						/>
-						<Text style={styles.stars}>{stars}</Text>
-					</View>
+					<StarsList stars={stars} />
 					<View style={styles.priceContainer}>
 						<Text style={styles.price}>{price}</Text>
 						<Fontisto

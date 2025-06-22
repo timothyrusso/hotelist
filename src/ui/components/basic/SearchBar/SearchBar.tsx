@@ -25,9 +25,13 @@ export const SearchBar = () => {
 					name={Icons.search}
 					size={Spacing.Triple}
 					style={styles.icon}
+					color={Colors.black.hover}
 				/>
 			) : (
-				<CloseButton onPress={() => handleChangeText("")} />
+				<CloseButton
+					onPress={() => handleChangeText("")}
+					style={styles.closeButton}
+				/>
 			)}
 		</View>
 	);

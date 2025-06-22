@@ -11,17 +11,16 @@ export const styles = StyleSheet.create({
 		backgroundColor: Colors.alpha.default,
 	},
 	logoText: {
-		fontSize: Spacing.Double,
+		fontSize: Spacing.Triple,
 		fontFamily: Fonts.interBold,
 		paddingRight: Spacing.SingleAndHalf,
+		width: "100%",
 	},
 	container: {
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "space-between",
 		alignSelf: "flex-start",
-		backgroundColor: Colors.black.disabled,
-		borderRadius: Spacing.Quintuple,
 		columnGap: Spacing.SingleAndHalf,
 	},
 });

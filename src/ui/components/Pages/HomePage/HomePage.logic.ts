@@ -4,13 +4,11 @@ import { useEffect } from "react";
 
 export const useHomePageLogic = () => {
 	const { hotelsSelectors, hotelsActions } = useHotelsState();
-	const { isLoading } = useGetHotelsQuery();
+	const { isLoading, hotelsData } = useGetHotelsQuery();
 
 	const hotelsList = hotelsSelectors.hotelsList();
 
 	const showEmptyList = !isLoading && hotelsList.length === 0;
-
-	const { hotelsData } = useGetHotelsQuery();
 
 	useEffect(() => {
 		hotelsActions.setHotelsList(hotelsData?.cardList ?? []);

@@ -18,4 +18,15 @@ export const en = {
 		place_name_a_to_z: "Place Name: A to Z",
 		place_name_z_to_a: "Place Name: Z to A",
 	},
+	hotel_details_page: {
+		night: "night",
+		users_rating: "Rating",
+		check_in_out: "Check-in & Check-out",
+		check_in: "Check-in",
+		check_out: "Check-out",
+		contact_information: "Contact Information",
+		gallery: "Gallery",
+		book_now: "Book Now",
+		booking: "Booking",
+	},
 };

@@ -5,8 +5,9 @@ import { Spacing } from "@/src/ui/constants/style/Spacing";
 import Entypo from "@expo/vector-icons/Entypo";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import { Image } from "expo-image";
 import type { FC } from "react";
-import { Image, Text, View } from "react-native";
+import { Pressable, Text, View } from "react-native";
 import { StarsList } from "../StarsList/StarsList";
 import { useHotelCardLogic } from "./HotelCard.logic";
 import { styles } from "./HotelCard.style";
@@ -16,15 +17,18 @@ type HotelCardProps = {
 };
 
 export const HotelCard: FC<HotelCardProps> = ({
-	hotel: { image, name, city, price, stars },
+	hotel: { image, name, city, price, stars, id },
 }) => {
-	const { imageError, handleImageError } = useHotelCardLogic();
+	const { imageError, handleImageError, onPress } = useHotelCardLogic(id);
 
 	// Analyze ri-renders
 	console.log("----------Hotel Card---------", name);
 
 	return (
-		<View style={styles.container}>
+		<Pressable
+			style={({ pressed }) => [styles.container, pressed && styles.pressed]}
+			onPress={onPress}
+		>
 			{image && !imageError ? (
 				<Image
 					source={{ uri: image }}
@@ -70,6 +74,6 @@ export const HotelCard: FC<HotelCardProps> = ({
 				style={styles.chevron}
 				color={Colors.alpha.default}
 			/>
-		</View>
+		</Pressable>
 	);
 };

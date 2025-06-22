@@ -2,6 +2,7 @@ import { Platforms } from "@/src/ui/constants/platform/Platforms";
 import { Colors } from "@/src/ui/constants/style/Colors";
 import { Components } from "@/src/ui/constants/style/Components";
 import { Fonts } from "@/src/ui/constants/style/Fonts";
+import { Opacity } from "@/src/ui/constants/style/Opacity";
 import { Shadows } from "@/src/ui/constants/style/Shadows";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";
@@ -85,5 +86,8 @@ export const styles = StyleSheet.create({
 		position: "absolute",
 		right: Spacing.Double,
 		alignSelf: "center",
+	},
+	pressed: {
+		opacity: Opacity.default,
 	},
 });

@@ -19,7 +19,7 @@ export const styles = (type: CustomButtonType) =>
 			justifyContent: "center",
 			borderWidth: type === CustomButtonType.Primary ? 0 : 2,
 			borderColor: Colors.black.default,
-			height: Spacing.separator40,
+			height: Spacing.Sextuple,
 		},
 		pressed: {
 			opacity: Opacity.default,

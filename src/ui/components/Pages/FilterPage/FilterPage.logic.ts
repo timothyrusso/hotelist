@@ -6,7 +6,7 @@ import { useHotelsState } from "@/src/ui/state/hotels";
 import { router } from "expo-router";
 
 export const useFilterPageLogic = () => {
-	const { hotelsData, getCardList } = useGetHotelsQuery();
+	const { hotelsData, getCardList, refetch } = useGetHotelsQuery();
 	const { filtersActions, filtersSelectors } = useFiltersState();
 	const { hotelsActions } = useHotelsState();
 
@@ -32,6 +32,7 @@ export const useFilterPageLogic = () => {
 
 		if (selectedOrderBy === value) {
 			filtersActions.setSelectedOrderBy("");
+			refetch(); // Restore the original list order
 			updatedHotelList = hotelsData?.cardList || [];
 			hotelsActions.setHotelsList(updatedHotelList);
 		} else {
@@ -48,6 +49,7 @@ export const useFilterPageLogic = () => {
 
 	const resetFilters = () => {
 		filtersActions.resetFilters();
+		refetch(); // Restore the original list order
 		hotelsActions.setHotelsList(hotelsData?.cardList ?? []);
 	};
 

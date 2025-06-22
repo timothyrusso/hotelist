@@ -30,7 +30,7 @@ export const useGetHotelsQuery = () => {
 		);
 	};
 
-	const { data, isLoading, error } = useQuery({
+	const { data, isLoading, error, refetch } = useQuery({
 		queryKey: [HotelQueryKeys.getHotels],
 		queryFn: () => getHotels(),
 		staleTime: QueryConfig.staleTime,
@@ -69,5 +69,5 @@ export const useGetHotelsQuery = () => {
 		}),
 	});
 
-	return { hotelsData: data, isLoading, error, getCardList };
+	return { hotelsData: data, isLoading, error, getCardList, refetch };
 };

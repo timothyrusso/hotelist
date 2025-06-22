@@ -1,6 +1,6 @@
 import { useGetHotelsQuery } from "@/src/ui/query/hotels/queries/useGetHotelsQuery";
 import { useHotelsState } from "@/src/ui/state/hotels";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const MIN_SEARCH_LENGTH = 2;
 
@@ -8,10 +8,6 @@ export const useSearchBarLogic = () => {
 	const [searchText, setSearchText] = useState<string>("");
 	const { hotelsData } = useGetHotelsQuery();
 	const { hotelsActions } = useHotelsState();
-
-	useEffect(() => {
-		hotelsActions.setHotelsList(hotelsData?.cardList ?? []);
-	}, [hotelsData?.cardList, hotelsActions]);
 
 	const handleChangeText = (text: string) => {
 		setSearchText(text);

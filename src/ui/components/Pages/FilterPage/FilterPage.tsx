@@ -2,6 +2,7 @@ import { en } from "@/src/modules/localization/locales/en";
 import { Screens } from "@/src/ui/constants/navigation/Routes";
 import { Icons } from "@/src/ui/constants/style/Icons";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
+import { OrderByKeys } from "@/src/ui/state/filters/types";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import { ScrollView, Text, View } from "react-native";
 import { BasicView } from "../../basic/BasicView/BasicView";
@@ -11,6 +12,7 @@ import {
 	CustomButtonType,
 } from "../../basic/CustomButton/CustomButton";
 import { FilterItem } from "../../composite/FilterItem/FilterItem";
+import { OrderByItem } from "../../composite/OrderByItem/OrderByItem";
 import { useFilterPageLogic } from "./FilterPage.logic";
 import { styles } from "./FilterPage.style";
 
@@ -22,6 +24,8 @@ export const FilterPage = () => {
 		stars,
 		resetFilters,
 		applyFilters,
+		selectedOrderBy,
+		handleOrderByPress,
 	} = useFilterPageLogic();
 
 	return (
@@ -46,6 +50,13 @@ export const FilterPage = () => {
 						showIcon
 						onPress={handleStarsPress}
 						selectedData={stars}
+					/>
+					<OrderByItem
+						icon={Icons.list}
+						title={en.filter_page.order_by}
+						data={Object.values(OrderByKeys)}
+						onPress={handleOrderByPress as (value: string | number) => void}
+						selectedData={selectedOrderBy}
 					/>
 				</ScrollView>
 				<View style={styles.footer}>

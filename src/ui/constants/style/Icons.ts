@@ -9,4 +9,5 @@ export const Icons = {
 	close: "close-a",
 	chevronRight: "chevron-right",
 	filter: "filter",
+	list: "list-2",
 } as const;

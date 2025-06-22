@@ -8,7 +8,7 @@ import { useFilterChipLogic } from "./FilterChip.logic";
 type FilterChipProps = {
 	value: string | number;
 	icon?: FontistoName;
-	onPress: (value: string | number) => void;
+	onPress: (value: string | number | OrderByKeysType) => void;
 	selectedData: string[] | number[] | OrderByKeysType;
 };
 

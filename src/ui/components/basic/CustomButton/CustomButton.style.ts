@@ -1,5 +1,5 @@
 import { Colors } from "@/src/ui/constants/style/Colors";
-import { Fonts } from "@/src/ui/constants/style/Fonts";
+import { Fonts } from "@/src/ui/constants/style/Font";
 import { Opacity } from "@/src/ui/constants/style/Opacity";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";

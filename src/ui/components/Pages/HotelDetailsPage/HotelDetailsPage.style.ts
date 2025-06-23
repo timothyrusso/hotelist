@@ -1,7 +1,7 @@
 import { SCREEN_WIDTH } from "@/src/ui/constants/platform/Platforms";
 import { Colors } from "@/src/ui/constants/style/Colors";
 import { Components } from "@/src/ui/constants/style/Components";
-import { Fonts } from "@/src/ui/constants/style/Fonts";
+import { Fonts } from "@/src/ui/constants/style/Font";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";
 

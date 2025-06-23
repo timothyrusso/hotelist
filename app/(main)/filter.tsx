@@ -1,4 +1,4 @@
-import { FilterPage } from "@/src/ui/components/screens/FilterPage/FilterPage";
+import { FilterPage } from "@/src/ui/components/pages/FilterPage/FilterPage";
 
 export default function FilterScreen() {
 	return <FilterPage />;

@@ -3,12 +3,14 @@ import { en } from "@/src/modules/localization/locales/en";
 export type FiltersState = {
 	stars: number[];
 	selectedOrderBy: OrderByKeysType;
+	searchedText: string;
 };
 
 export type FiltersActions = {
 	actions: {
 		setStars: (stars: number[]) => void;
 		setSelectedOrderBy: (selectedOrderBy: OrderByKeysType) => void;
+		setSearchedText: (searchedText: string) => void;
 		resetFilters: () => void;
 	};
 };

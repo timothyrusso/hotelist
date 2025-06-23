@@ -13,4 +13,13 @@ export const styles = StyleSheet.create({
 		justifyContent: "space-between",
 		columnGap: Spacing.SingleAndHalf,
 	},
+	chipsContainer: {
+		flexDirection: "row",
+		alignItems: "center",
+		columnGap: Spacing.SingleAndHalf,
+		width: "100%",
+	},
+	chip: {
+		height: Spacing.Sextuple,
+	},
 });

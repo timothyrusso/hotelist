@@ -8,10 +8,8 @@ import { ScrollView, Text, View } from "react-native";
 import Toast from "react-native-toast-message";
 import { BasicView } from "../../basic/BasicView/BasicView";
 import { CloseButton } from "../../basic/CloseButton/CloseButton";
-import {
-	CustomButton,
-	CustomButtonType,
-} from "../../basic/CustomButton/CustomButton";
+import { CustomButton } from "../../basic/CustomButton/CustomButton";
+import { CustomButtonType } from "../../basic/CustomButton/CustomButton.types";
 import { FilterItem } from "../../composite/FilterItem/FilterItem";
 import { OrderByItem } from "../../composite/OrderByItem/OrderByItem";
 import { useFilterPageLogic } from "./FilterPage.logic";

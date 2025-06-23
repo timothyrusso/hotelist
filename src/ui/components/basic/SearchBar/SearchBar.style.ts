@@ -24,5 +24,6 @@ export const styles = StyleSheet.create({
 		position: "absolute",
 		left: Spacing.Triple,
 		top: Spacing.Triple + Spacing.Minimal,
+		width: Spacing.Double,
 	},
 });

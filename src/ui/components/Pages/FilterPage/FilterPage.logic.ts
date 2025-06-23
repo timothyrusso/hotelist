@@ -54,7 +54,6 @@ export const useFilterPageLogic = () => {
 	const resetFilters = () => {
 		filtersActions.resetFilters();
 		refetch(); // Restore the original list order
-		hotelsActions.setHotelsList(hotelsData?.cardList ?? []);
 	};
 
 	const applyFilters = () => {

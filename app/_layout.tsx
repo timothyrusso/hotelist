@@ -1,6 +1,6 @@
 import { Stacks } from "@/src/ui/constants/navigation/Routes";
 import { ScreenOptions } from "@/src/ui/constants/navigation/ScreenOptions";
-import { fontsConfig } from "@/src/ui/constants/style/Font";
+import { fontsConfig } from "@/src/ui/constants/style/Fonts";
 import { queryClient } from "@/src/ui/query/QueryConfig";
 import { useReactQueryDevTools } from "@dev-plugins/react-query";
 import { QueryClientProvider } from "@tanstack/react-query";

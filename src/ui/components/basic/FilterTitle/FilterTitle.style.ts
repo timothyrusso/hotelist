@@ -1,4 +1,4 @@
-import { Fonts } from "@/src/ui/constants/style/Font";
+import { Fonts } from "@/src/ui/constants/style/Fonts";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";
 

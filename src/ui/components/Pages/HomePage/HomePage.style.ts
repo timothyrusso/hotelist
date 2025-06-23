@@ -1,3 +1,4 @@
+import { Components } from "@/src/ui/constants/style/Components";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";
 
@@ -12,5 +13,10 @@ export const styles = StyleSheet.create({
 	},
 	separator: {
 		height: Spacing.TripleAndHalf,
+	},
+	skeleton: {
+		width: "100%",
+		height: Components.hotelCardSkeleton.image.height,
+		borderRadius: Spacing.Double,
 	},
 });

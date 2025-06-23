@@ -29,4 +29,7 @@ export const en = {
 		book_now: "Book Now",
 		booking: "Booking",
 	},
+	shared: {
+		something_went_wrong: "Oops! Something went wrong",
+	},
 };

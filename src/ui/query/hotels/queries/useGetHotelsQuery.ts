@@ -1,6 +1,8 @@
 import type { HotelDto } from "@/src/modules/hotels/domain/dto/HotelDto";
 import type { HotelCardItem } from "@/src/modules/hotels/domain/entities/HotelCardItem";
 import { GetHotelsUseCase } from "@/src/modules/hotels/usecases/GetHotelsUseCase";
+import { en } from "@/src/modules/localization/locales/en";
+import { ToastType, useToast } from "@/src/ui/hooks/useToast";
 import {
 	OrderByKeys,
 	type OrderByKeysType,
@@ -10,9 +12,18 @@ import { QueryConfig } from "../../QueryConfig";
 import { HotelQueryKeys } from "../HotelQueryKeys";
 
 export const useGetHotelsQuery = () => {
+	const { showToast } = useToast();
+
 	const getHotels = async () => {
 		const response = await GetHotelsUseCase();
-		if (!response.success) throw new Error(response.error.message);
+		if (!response.success) {
+			showToast(
+				en.shared.something_went_wrong,
+				ToastType.ERROR,
+				response.error.message,
+			);
+			throw new Error(response.error.message);
+		}
 
 		return response.data;
 	};

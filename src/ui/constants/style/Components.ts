@@ -14,4 +14,9 @@ export const Components = {
 			},
 		},
 	},
+	hotelCardSkeleton: {
+		image: {
+			height: 124,
+		},
+	},
 };

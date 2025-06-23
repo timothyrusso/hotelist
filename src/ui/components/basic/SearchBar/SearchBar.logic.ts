@@ -1,4 +1,5 @@
 import type { HotelCardItem } from "@/src/modules/hotels/domain/entities/HotelCardItem";
+import { useGetHotelsQuery } from "@/src/ui/query/hotels/queries/useGetHotelsQuery";
 import { useHotelsState } from "@/src/ui/state/hotels";
 import { useEffect, useState } from "react";
 
@@ -9,6 +10,8 @@ export const useSearchBarLogic = () => {
 	const [currentFilteredList, setCurrentFilteredList] = useState<
 		HotelCardItem[]
 	>([]);
+
+	const { isLoading } = useGetHotelsQuery();
 
 	const { hotelsActions, hotelsSelectors } = useHotelsState();
 
@@ -42,5 +45,6 @@ export const useSearchBarLogic = () => {
 	return {
 		searchText,
 		handleChangeText,
+		isLoading,
 	};
 };

@@ -7,13 +7,15 @@ const MIN_SEARCH_LENGTH = 1;
 
 export const useSearchBarLogic = () => {
 	const [searchText, setSearchText] = useState<string>("");
-	const { filtersActions } = useFiltersState();
+	const { filtersActions, filtersSelectors } = useFiltersState();
 
 	const { isLoading, hotelsData } = useGetHotelsQuery();
 
 	const { hotelsActions, hotelsSelectors } = useHotelsState();
 
-	const hotelsList = hotelsSelectors.hotelsList();
+	const isFilterApplied = filtersSelectors.isFilterApplied();
+
+	const filteredByFiltersOnly = hotelsSelectors.filteredByFiltersOnly();
 
 	const handleChangeText = (text: string) => {
 		setSearchText(text);
@@ -23,12 +25,21 @@ export const useSearchBarLogic = () => {
 		filtersActions.setSearchedText(trimmedText);
 
 		// If search is cleared (text too short) → restore previous filtered state
-		if (trimmedText.length <= MIN_SEARCH_LENGTH) {
+		if (trimmedText.length <= MIN_SEARCH_LENGTH && !isFilterApplied) {
 			hotelsActions.setHotelsList(hotelsData?.cardList ?? []);
+			return;
+		} else if (trimmedText.length <= MIN_SEARCH_LENGTH && isFilterApplied) {
+			// Use the list that's filtered only by filters (not by search text)
+			hotelsActions.setHotelsList(filteredByFiltersOnly);
 			return;
 		}
 
-		const filteredHotels = [...hotelsList]?.filter((hotel) =>
+		// Filter from the list that's filtered only by filters (not by previous search text)
+		const baseList = isFilterApplied
+			? filteredByFiltersOnly
+			: (hotelsData?.cardList ?? []);
+
+		const filteredHotels = [...baseList]?.filter((hotel) =>
 			hotel.name.toLowerCase().includes(trimmedText.toLowerCase()),
 		);
 

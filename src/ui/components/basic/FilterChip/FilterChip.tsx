@@ -1,4 +1,4 @@
-import type { OrderByKeysType } from "@/src/ui/state/filters/types";
+import type { OrderByKeysType } from "@/src/ui/hooks/useFilterLogic";
 import type { FC } from "react";
 import { Pressable, Text } from "react-native";
 import type { FontistoName } from "../FilterTitle/FilterTitle";

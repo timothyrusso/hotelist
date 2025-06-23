@@ -1,4 +1,4 @@
-import type { OrderByKeysType } from "@/src/ui/state/filters/types";
+import type { OrderByKeysType } from "@/src/ui/hooks/useFilterLogic";
 import { styles as defaultStyles } from "./FilterChip.style";
 
 export const useFilterChipLogic = (

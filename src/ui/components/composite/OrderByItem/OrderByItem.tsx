@@ -1,5 +1,5 @@
 import { Spacing } from "@/src/ui/constants/style/Spacing";
-import type { OrderByKeysType } from "@/src/ui/state/filters/types";
+import type { OrderByKeysType } from "@/src/ui/hooks/useFilterLogic";
 import type { FC } from "react";
 import { View } from "react-native";
 import { FilterChip } from "../../basic/FilterChip/FilterChip";

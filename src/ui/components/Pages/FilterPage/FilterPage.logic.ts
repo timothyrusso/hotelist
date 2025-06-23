@@ -15,8 +15,14 @@ export const useFilterPageLogic = () => {
 	const filteredStars = filtersSelectors.stars();
 	const selectedOrderBy = filtersSelectors.selectedOrderBy();
 
-	const { applyFilters, resetFilters, handleStarsPress, handleOrderByPress } =
-		useFilterLogic();
+	const {
+		applyFilters,
+		resetFilters,
+		handleStarsPress,
+		handleOrderByPress,
+		disableResetButton,
+		disableApplyButton,
+	} = useFilterLogic();
 
 	const closeFilter = () => {
 		router.back();
@@ -34,5 +40,7 @@ export const useFilterPageLogic = () => {
 		selectedOrderBy,
 		handleOrderByPress,
 		styles,
+		disableApplyButton,
+		disableResetButton,
 	};
 };

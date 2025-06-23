@@ -1,9 +1,10 @@
-import { en } from "@/src/modules/localization/locales/en";
+import type { OrderByKeysType } from "../../hooks/useFilterLogic";
 
 export type FiltersState = {
 	stars: number[];
 	selectedOrderBy: OrderByKeysType;
 	searchedText: string;
+	isFilterApplied: boolean;
 };
 
 export type FiltersActions = {
@@ -11,17 +12,7 @@ export type FiltersActions = {
 		setStars: (stars: number[]) => void;
 		setSelectedOrderBy: (selectedOrderBy: OrderByKeysType) => void;
 		setSearchedText: (searchedText: string) => void;
+		setIsFilterApplied: (isFilterApplied: boolean) => void;
 		resetFilters: () => void;
 	};
 };
-
-export const OrderByKeys = {
-	PriceAsc: en.filter_page.price_low_to_high,
-	PriceDesc: en.filter_page.price_high_to_low,
-	PlaceNameDesc: en.filter_page.place_name_z_to_a,
-	PlaceNameAsc: en.filter_page.place_name_a_to_z,
-	HotelRatingDesc: en.filter_page.hotel_rating_low_to_high,
-	HotelRatingAsc: en.filter_page.hotel_rating_high_to_low,
-} as const;
-
-export type OrderByKeysType = (typeof OrderByKeys)[keyof typeof OrderByKeys];

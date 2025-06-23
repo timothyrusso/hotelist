@@ -1,11 +1,7 @@
 import type { FC } from "react";
 import { Pressable, type StyleProp, Text, type ViewStyle } from "react-native";
 import { styles as buttonStyles } from "./CustomButton.style";
-
-export enum CustomButtonType {
-	Primary = "primary",
-	Secondary = "secondary",
-}
+import { CustomButtonType } from "./CustomButton.types";
 
 type CustomButtonProps = {
 	title: string;

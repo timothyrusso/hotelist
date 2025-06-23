@@ -1,3 +1,4 @@
+import { Platforms } from "@/src/ui/constants/platform/Platforms";
 import { Colors } from "@/src/ui/constants/style/Colors";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { Image } from "expo-image";
@@ -15,6 +16,7 @@ export const ImageModal = () => {
 			transparent
 			animationType="fade"
 			onRequestClose={closeImageModal}
+			statusBarTranslucent={Platforms.Android}
 		>
 			<View style={styles.modalOverlay}>
 				<CloseButton

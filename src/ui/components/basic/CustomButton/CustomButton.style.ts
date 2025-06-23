@@ -3,7 +3,7 @@ import { Fonts } from "@/src/ui/constants/style/Fonts";
 import { Opacity } from "@/src/ui/constants/style/Opacity";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";
-import { CustomButtonType } from "./CustomButton";
+import { CustomButtonType } from "./CustomButton.types";
 
 export const styles = (type: CustomButtonType) =>
 	StyleSheet.create({

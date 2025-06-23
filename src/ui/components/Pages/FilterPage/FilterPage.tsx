@@ -2,16 +2,14 @@ import { en } from "@/src/modules/localization/locales/en";
 import { Screens } from "@/src/ui/constants/navigation/Routes";
 import { Icons } from "@/src/ui/constants/style/Icons";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
-import { OrderByKeys } from "@/src/ui/state/filters/types";
+import { OrderByKeys } from "@/src/ui/hooks/useFilterLogic";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import { ScrollView, Text, View } from "react-native";
 import Toast from "react-native-toast-message";
 import { BasicView } from "../../basic/BasicView/BasicView";
 import { CloseButton } from "../../basic/CloseButton/CloseButton";
-import {
-	CustomButton,
-	CustomButtonType,
-} from "../../basic/CustomButton/CustomButton";
+import { CustomButton } from "../../basic/CustomButton/CustomButton";
+import { CustomButtonType } from "../../basic/CustomButton/CustomButton.types";
 import { FilterItem } from "../../composite/FilterItem/FilterItem";
 import { OrderByItem } from "../../composite/OrderByItem/OrderByItem";
 import { useFilterPageLogic } from "./FilterPage.logic";
@@ -27,6 +25,8 @@ export const FilterPage = () => {
 		selectedOrderBy,
 		handleOrderByPress,
 		styles,
+		disableApplyButton,
+		disableResetButton,
 	} = useFilterPageLogic();
 
 	return (
@@ -65,8 +65,13 @@ export const FilterPage = () => {
 						title={en.filter_page.reset}
 						onPress={resetFilters}
 						type={CustomButtonType.Secondary}
+						disabled={disableResetButton}
 					/>
-					<CustomButton title={en.filter_page.apply} onPress={applyFilters} />
+					<CustomButton
+						title={en.filter_page.apply}
+						onPress={applyFilters}
+						disabled={disableApplyButton}
+					/>
 				</View>
 				<Toast />
 			</View>

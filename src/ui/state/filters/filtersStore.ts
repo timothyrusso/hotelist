@@ -1,9 +1,12 @@
+import type { OrderByKeysType } from "../../hooks/useFilterLogic";
 import { create } from "../shared/createStore";
-import type { FiltersActions, FiltersState, OrderByKeysType } from "./types";
+import type { FiltersActions, FiltersState } from "./types";
 
 export const initialState: FiltersState = {
 	stars: [],
 	selectedOrderBy: "",
+	searchedText: "",
+	isFilterApplied: false,
 };
 
 export const useFiltersStore = create<FiltersState & FiltersActions>((set) => ({
@@ -14,6 +17,12 @@ export const useFiltersStore = create<FiltersState & FiltersActions>((set) => ({
 		},
 		setSelectedOrderBy: (selectedOrderBy: OrderByKeysType) => {
 			set({ selectedOrderBy });
+		},
+		setSearchedText: (searchedText) => {
+			set({ searchedText });
+		},
+		setIsFilterApplied: (isFilterApplied) => {
+			set({ isFilterApplied });
 		},
 		resetFilters: () => {
 			set(initialState);

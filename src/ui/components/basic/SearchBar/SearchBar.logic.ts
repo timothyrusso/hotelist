@@ -1,44 +1,48 @@
-import type { HotelCardItem } from "@/src/modules/hotels/domain/entities/HotelCardItem";
 import { useGetHotelsQuery } from "@/src/ui/query/hotels/queries/useGetHotelsQuery";
+import { useFiltersState } from "@/src/ui/state/filters";
 import { useHotelsState } from "@/src/ui/state/hotels";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const MIN_SEARCH_LENGTH = 1;
 
 export const useSearchBarLogic = () => {
 	const [searchText, setSearchText] = useState<string>("");
-	const [currentFilteredList, setCurrentFilteredList] = useState<
-		HotelCardItem[]
-	>([]);
+	const { filtersActions, filtersSelectors } = useFiltersState();
 
-	const { isLoading } = useGetHotelsQuery();
+	const { isLoading, hotelsData } = useGetHotelsQuery();
 
 	const { hotelsActions, hotelsSelectors } = useHotelsState();
 
-	const hotelsList = hotelsSelectors.hotelsList();
+	const isFilterApplied = filtersSelectors.isFilterApplied();
 
-	// Store the current filtered list when it changes (from other filters)
-	useEffect(() => {
-		if (searchText.length <= MIN_SEARCH_LENGTH) {
-			setCurrentFilteredList(hotelsList);
-		}
-	}, [hotelsList, searchText]);
+	const filteredByFiltersOnly = hotelsSelectors.filteredByFiltersOnly();
 
 	const handleChangeText = (text: string) => {
 		setSearchText(text);
 
 		const trimmedText = text.trim();
 
-		if (trimmedText.length <= MIN_SEARCH_LENGTH) {
-			// Restore the current filtered list (which may have other filters applied)
-			hotelsActions.setHotelsList(currentFilteredList);
+		filtersActions.setSearchedText(trimmedText);
+
+		// If search is cleared (text too short) → restore previous filtered state
+		if (trimmedText.length <= MIN_SEARCH_LENGTH && !isFilterApplied) {
+			hotelsActions.setHotelsList(hotelsData?.cardList ?? []);
+			return;
+		} else if (trimmedText.length <= MIN_SEARCH_LENGTH && isFilterApplied) {
+			// Use the list that's filtered only by filters (not by search text)
+			hotelsActions.setHotelsList(filteredByFiltersOnly);
 			return;
 		}
 
-		// Filter from the current filtered list (respecting other filters)
-		const filteredHotels = [...currentFilteredList]?.filter((hotel) =>
+		// Filter from the list that's filtered only by filters (not by previous search text)
+		const baseList = isFilterApplied
+			? filteredByFiltersOnly
+			: (hotelsData?.cardList ?? []);
+
+		const filteredHotels = [...baseList]?.filter((hotel) =>
 			hotel.name.toLowerCase().includes(trimmedText.toLowerCase()),
 		);
+
 		hotelsActions.setHotelsList(filteredHotels);
 	};
 

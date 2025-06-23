@@ -18,10 +18,9 @@ export type OrderByKeysType = (typeof OrderByKeys)[keyof typeof OrderByKeys];
 
 export const useFilterLogic = () => {
 	const { filtersSelectors, filtersActions } = useFiltersState();
-	const { hotelsSelectors, hotelsActions } = useHotelsState();
+	const { hotelsActions } = useHotelsState();
 	const { hotelsData, refetch } = useGetHotelsQuery();
 	const orderByValue = filtersSelectors.selectedOrderBy();
-	const hotelsList = hotelsSelectors.hotelsList();
 
 	const searchedText = filtersSelectors.searchedText();
 
@@ -73,39 +72,37 @@ export const useFilterLogic = () => {
 	};
 
 	const applyFilters = () => {
-		let filteredListByText = hotelsList;
+		// First, apply only stars and orderBy filters (no search text) for filteredByFiltersOnly
+		let filteredByFiltersOnly = initialHotelsData;
 
-		if (searchedText !== "") {
-			filteredListByText = filterListByText(filteredListByText);
-		}
-
-		let filteredHotels = filteredListByText;
-
-		if (filteredStars.length > 0 && orderByValue !== "") {
-			filteredHotels = orderHotelsByKey(
-				filterListByText(initialHotelsData),
-				orderByValue,
-			)?.filter((hotel) => filteredStars.includes(hotel.stars));
-			filtersActions.setIsFilterApplied(true);
-		} else if (orderByValue === "" && filteredStars.length === 0) {
-			filteredHotels = filterListByText(initialHotelsData);
-			filtersActions.setIsFilterApplied(false);
-		} else if (orderByValue !== "" && filteredStars.length === 0) {
-			filteredHotels = orderHotelsByKey(
-				filterListByText(initialHotelsData),
-				orderByValue,
-			);
-			filtersActions.setIsFilterApplied(true);
-		} else if (orderByValue === "" && filteredStars.length > 0) {
-			filteredHotels = filteredHotels?.filter((hotel) =>
+		if (filteredStars.length > 0) {
+			filteredByFiltersOnly = filteredByFiltersOnly.filter((hotel) =>
 				filteredStars.includes(hotel.stars),
 			);
-			filtersActions.setIsFilterApplied(true);
 		}
 
-		hotelsActions.setHotelsList(filteredHotels ?? []);
-		// Save the filtered list (without search text) to restore it when search is cleared
-		hotelsActions.setFilteredByFiltersOnly(filteredHotels ?? []);
+		if (orderByValue !== "") {
+			filteredByFiltersOnly = orderHotelsByKey(
+				filteredByFiltersOnly,
+				orderByValue,
+			);
+		}
+
+		// Then, apply search text on top of the filtered results for the final list
+		let finalFilteredHotels = filteredByFiltersOnly;
+		if (searchedText !== "") {
+			finalFilteredHotels = finalFilteredHotels.filter((hotel) =>
+				hotel.name.toLowerCase().includes(searchedText.toLowerCase()),
+			);
+		}
+
+		// Update filter applied state
+		const hasFilters = filteredStars.length > 0 || orderByValue !== "";
+		filtersActions.setIsFilterApplied(hasFilters);
+
+		// Save both states correctly
+		hotelsActions.setHotelsList(finalFilteredHotels);
+		hotelsActions.setFilteredByFiltersOnly(filteredByFiltersOnly); // Only stars + orderBy, no search text
 
 		router.back();
 	};
@@ -113,11 +110,14 @@ export const useFilterLogic = () => {
 	const resetFilters = () => {
 		filtersActions.resetFilters();
 
-		if (searchedText === "") {
-			hotelsActions.setHotelsList(initialHotelsData);
-		} else {
-			hotelsActions.setHotelsList(filterListByText(initialHotelsData));
-		}
+		// Reset to original data with or without search text
+		const resetList =
+			searchedText === ""
+				? initialHotelsData
+				: filterListByText(initialHotelsData);
+
+		hotelsActions.setHotelsList(resetList);
+		hotelsActions.setFilteredByFiltersOnly(initialHotelsData); // Reset to original data
 
 		refetch(); // Restore the original list order
 

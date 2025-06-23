@@ -9,7 +9,7 @@ import { useSearchBarLogic } from "./SearchBar.logic";
 import { styles } from "./SearchBar.style";
 
 export const SearchBar = () => {
-	const { searchText, handleChangeText } = useSearchBarLogic();
+	const { searchText, handleChangeText, isLoading } = useSearchBarLogic();
 
 	return (
 		<View style={styles.container}>
@@ -19,6 +19,7 @@ export const SearchBar = () => {
 				placeholderTextColor={Colors.black.hover}
 				onChangeText={handleChangeText}
 				value={searchText}
+				editable={!isLoading}
 			/>
 			{searchText.length === 0 ? (
 				<Fontisto

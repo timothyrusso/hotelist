@@ -5,6 +5,7 @@ import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { OrderByKeys } from "@/src/ui/state/filters/types";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import { ScrollView, Text, View } from "react-native";
+import Toast from "react-native-toast-message";
 import { BasicView } from "../../basic/BasicView/BasicView";
 import { CloseButton } from "../../basic/CloseButton/CloseButton";
 import {
@@ -67,6 +68,7 @@ export const FilterPage = () => {
 					/>
 					<CustomButton title={en.filter_page.apply} onPress={applyFilters} />
 				</View>
+				<Toast />
 			</View>
 		</BasicView>
 	);

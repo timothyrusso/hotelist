@@ -7,12 +7,13 @@ import { useFilterButtonLogic } from "./FilterButton.logic";
 import { styles } from "./FilterButton.style";
 
 export const FilterButton = () => {
-	const { handlePress } = useFilterButtonLogic();
+	const { handlePress, isLoading } = useFilterButtonLogic();
 
 	return (
 		<Pressable
 			style={({ pressed }) => [styles.container, pressed && styles.pressed]}
 			onPress={handlePress}
+			disabled={isLoading}
 		>
 			<Ionicons
 				name={Icons.options}

@@ -43,3 +43,6 @@ android/
 
 # iOS
 ios/
+
+# Jest
+coverage/

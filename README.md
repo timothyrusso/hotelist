@@ -67,3 +67,9 @@ hotelist is a simple and responsive mobile application built with Expo and React
    ```bash
     npx expo start
    ```
+
+## Run unit tests
+
+```bash
+npm run test
+```

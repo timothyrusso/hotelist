@@ -14,10 +14,12 @@ export const styles = (isSelected: boolean) =>
 			borderRadius: Spacing.Fourfold,
 			borderWidth: 1,
 			borderColor: Colors.black.disabled,
+			height: Spacing.Sextuple,
+			justifyContent: "center",
 		},
 		text: {
 			fontSize: Spacing.Double,
-			fontFamily: Fonts.interMedium,
+			fontFamily: Fonts.interBold,
 			color: isSelected ? Colors.white.default : Colors.black.default,
 		},
 		selected: {

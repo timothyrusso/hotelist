@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasicSkeleton should render correctly with children 1`] = `
+<View
+  collapsable={false}
+  style={
+    {
+      "backgroundColor": "#e8e8e8",
+      "opacity": 0.4,
+    }
+  }
+>
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "#e8e8e8",
+        "opacity": 0.4,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`BasicSkeleton should render correctly with children and custom style 1`] = `
+<View
+  collapsable={false}
+  style={
+    {
+      "backgroundColor": "#e8e8e8",
+      "opacity": 0.4,
+      "padding": 16,
+    }
+  }
+>
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "#e8e8e8",
+        "margin": 12,
+        "opacity": 0.4,
+      }
+    }
+  />
+</View>
+`;
+
+exports[`BasicSkeleton should render correctly with custom style 1`] = `
+<View
+  collapsable={false}
+  style={
+    {
+      "backgroundColor": "#e8e8e8",
+      "height": 80,
+      "opacity": 0.4,
+      "width": 120,
+    }
+  }
+/>
+`;
+
+exports[`BasicSkeleton should render correctly with default props 1`] = `
+<View
+  collapsable={false}
+  style={
+    {
+      "backgroundColor": "#e8e8e8",
+      "opacity": 0.4,
+    }
+  }
+/>
+`;

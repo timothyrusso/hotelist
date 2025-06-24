@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasicView snapshot tests should render correctly in full screen mode 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+      "justifyContent": "center",
+      "paddingTop": 0,
+      "width": "100%",
+    }
+  }
+>
+  <View>
+    <Text>
+      Test Content
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`BasicView snapshot tests should render correctly with all custom props 1`] = `
+<View
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+      "justifyContent": "center",
+      "paddingTop": 0,
+      "width": "100%",
+    }
+  }
+>
+  <View>
+    <Text>
+      Test Content
+    </Text>
+  </View>
+</View>
+`;
+
+exports[`BasicView snapshot tests should render correctly with default props 1`] = `
+<RCTSafeAreaView
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+      "justifyContent": "center",
+      "paddingTop": 0,
+      "width": "100%",
+    }
+  }
+>
+  <View>
+    <Text>
+      Test Content
+    </Text>
+  </View>
+</RCTSafeAreaView>
+`;
+
+exports[`BasicView snapshot tests should render correctly with light status bar 1`] = `
+<RCTSafeAreaView
+  style={
+    {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "flex": 1,
+      "justifyContent": "center",
+      "paddingTop": 0,
+      "width": "100%",
+    }
+  }
+>
+  <View>
+    <Text>
+      Test Content
+    </Text>
+  </View>
+</RCTSafeAreaView>
+`;

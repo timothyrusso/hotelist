@@ -1,0 +1,98 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chip snapshot tests should render correctly with custom container style 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 24,
+        "padding": 8,
+      },
+      {
+        "backgroundColor": "#5672bc",
+        "padding": 20,
+      },
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#1A1A1A",
+          "fontFamily": "inter-bold",
+          "fontSize": 16,
+        },
+        undefined,
+      ]
+    }
+  >
+    Test Chip
+  </Text>
+</View>
+`;
+
+exports[`Chip snapshot tests should render correctly with custom text style 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 24,
+        "padding": 8,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#1A1A1A",
+          "fontFamily": "inter-bold",
+          "fontSize": 16,
+        },
+        {
+          "color": "#5672bc",
+          "fontFamily": "inter-medium",
+          "fontSize": 16,
+        },
+      ]
+    }
+  >
+    Test Chip
+  </Text>
+</View>
+`;
+
+exports[`Chip snapshot tests should render correctly with default props 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 24,
+        "padding": 8,
+      },
+      undefined,
+    ]
+  }
+>
+  <Text
+    style={
+      [
+        {
+          "color": "#1A1A1A",
+          "fontFamily": "inter-bold",
+          "fontSize": 16,
+        },
+        undefined,
+      ]
+    }
+  >
+    Test Chip
+  </Text>
+</View>
+`;

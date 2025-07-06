@@ -25,10 +25,16 @@ export const styles = (bottom: number, top: number) =>
 			alignItems: "center",
 			backgroundColor: Colors.alpha.default,
 		},
-		iconButton: {
+		leftIconButton: {
 			position: "absolute",
 			top: top + Spacing.Single,
 			left: Spacing.Fourfold,
+			zIndex: 1,
+		},
+		rightIconButton: {
+			position: "absolute",
+			top: top + Spacing.Single,
+			right: Spacing.Fourfold,
 			zIndex: 1,
 		},
 		infoContainer: {

@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
 		width: "100%",
 	},
 	listContentContainer: {
-		paddingHorizontal: Spacing.TripleAndHalf,
 		paddingBottom: Spacing.separator40,
 	},
 	separator: {
@@ -18,5 +17,8 @@ export const styles = StyleSheet.create({
 		width: "100%",
 		height: Components.hotelCardSkeleton.image.height,
 		borderRadius: Spacing.Double,
+	},
+	hotelCard: {
+		paddingHorizontal: Spacing.TripleAndHalf,
 	},
 });

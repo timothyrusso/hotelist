@@ -31,6 +31,8 @@ export const HotelDetailsPage = () => {
 		chipLabel,
 		goBack,
 		mainImage,
+		isFavorite,
+		handleFavoritePress,
 	} = useHotelDetailsPageLogic();
 
 	return (
@@ -45,8 +47,15 @@ export const HotelDetailsPage = () => {
 						<IconButton
 							icon={Icons.angleLeft}
 							onPress={goBack}
-							style={styles.iconButton}
+							style={styles.leftIconButton}
 							iconSize={Spacing.Fourfold}
+						/>
+						<IconButton
+							icon={isFavorite ? Icons.heart : Icons.heartOutline}
+							onPress={handleFavoritePress}
+							style={styles.rightIconButton}
+							iconSize={Spacing.Fourfold}
+							iconType="ionicons"
 						/>
 						<Chip
 							label={chipLabel}
@@ -112,6 +121,7 @@ export const HotelDetailsPage = () => {
 								icon={Icons.email}
 								iconSize={Spacing.SingleAndHalf + Spacing.Minimal}
 								iconColor={Colors.black.hover}
+								detectorType="email"
 							/>
 							<FilterTitle
 								textStyle={styles.contactText}
@@ -119,6 +129,7 @@ export const HotelDetailsPage = () => {
 								icon={Icons.phone}
 								iconSize={Spacing.SingleAndHalf + Spacing.Minimal}
 								iconColor={Colors.black.hover}
+								detectorType="phoneNumber"
 							/>
 						</View>
 						{showGallery && (

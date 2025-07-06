@@ -1,5 +1,6 @@
 import { en } from "@/src/modules/localization/locales/en";
 import { useGetHotelsQuery } from "@/src/ui/query/hotels/queries/useGetHotelsQuery";
+import { useHotelsState } from "@/src/ui/state/hotels";
 import { router, useLocalSearchParams } from "expo-router";
 import { useState } from "react";
 import { Linking } from "react-native";
@@ -10,9 +11,21 @@ export const useHotelDetailsPageLogic = () => {
 	const { bottom, top } = useSafeAreaInsets();
 
 	const { id } = useLocalSearchParams();
+	
+	const { hotelsActions } = useHotelsState();
+
+	const isHotelFavorite = hotelsActions.getHotelById(Number(id))?.isFavorite;
+
 	const [imageError, setImageError] = useState<boolean>(false);
+	const [isFavorite, setIsFavorite] = useState<boolean>(isHotelFavorite ?? false);
+
 
 	const { hotelsData } = useGetHotelsQuery();
+
+	const handleFavoritePress = () => {
+		setIsFavorite(!isFavorite);
+		hotelsActions.setIsFavorite(Number(id), !isFavorite);
+	};
 
 	const hotelsPageData = hotelsData?.selectHotelById(Number(id));
 
@@ -50,5 +63,7 @@ export const useHotelDetailsPageLogic = () => {
 		chipLabel,
 		goBack: () => router.back(),
 		mainImage: hotelsPageData?.gallery[0],
+		isFavorite,
+		handleFavoritePress,
 	};
 };

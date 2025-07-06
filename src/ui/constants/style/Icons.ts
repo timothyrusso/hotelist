@@ -17,4 +17,6 @@ export const Icons = {
 	phone: "phone",
 	headphone: "headphone",
 	picture: "picture",
+	heart: "heart",
+	heartOutline: "heart-outline",
 } as const;

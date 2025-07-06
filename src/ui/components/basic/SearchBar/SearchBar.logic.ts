@@ -9,13 +9,15 @@ export const useSearchBarLogic = () => {
 	const [searchText, setSearchText] = useState<string>("");
 	const { filtersActions, filtersSelectors } = useFiltersState();
 
-	const { isLoading, hotelsData } = useGetHotelsQuery();
+	const { isLoading } = useGetHotelsQuery();
 
 	const { hotelsActions, hotelsSelectors } = useHotelsState();
 
 	const isFilterApplied = filtersSelectors.isFilterApplied();
 
 	const filteredByFiltersOnly = hotelsSelectors.filteredByFiltersOnly();
+
+	const hotelsListWithFavorites = hotelsSelectors.hotelsListWithFavorites();
 
 	const handleChangeText = (text: string) => {
 		setSearchText(text);
@@ -26,7 +28,7 @@ export const useSearchBarLogic = () => {
 
 		// If search is cleared (text too short) → restore previous filtered state
 		if (trimmedText.length <= MIN_SEARCH_LENGTH && !isFilterApplied) {
-			hotelsActions.setHotelsList(hotelsData?.cardList ?? []);
+			hotelsActions.setHotelsList(hotelsListWithFavorites);
 			return;
 		} else if (trimmedText.length <= MIN_SEARCH_LENGTH && isFilterApplied) {
 			// Use the list that's filtered only by filters (not by search text)
@@ -37,7 +39,7 @@ export const useSearchBarLogic = () => {
 		// Filter from the list that's filtered only by filters (not by previous search text)
 		const baseList = isFilterApplied
 			? filteredByFiltersOnly
-			: (hotelsData?.cardList ?? []);
+			: (hotelsListWithFavorites ?? []);
 
 		const filteredHotels = [...baseList]?.filter((hotel) =>
 			hotel.name.toLowerCase().includes(trimmedText.toLowerCase()),

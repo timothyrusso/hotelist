@@ -1,3 +1,4 @@
+import { Colors } from "@/src/ui/constants/style/Colors";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";
 
@@ -6,6 +7,9 @@ export const styles = StyleSheet.create({
 		paddingBottom: Spacing.Fourfold,
 		paddingTop: Spacing.separator80,
 		rowGap: Spacing.Fourfold,
+		backgroundColor: Colors.white.default,
+		width: "100%",
+		paddingHorizontal: Spacing.TripleAndHalf,
 	},
 	searchBarContainer: {
 		flexDirection: "row",
@@ -18,6 +22,8 @@ export const styles = StyleSheet.create({
 		alignItems: "center",
 		columnGap: Spacing.SingleAndHalf,
 		width: "100%",
+		flexWrap: "wrap",
+		rowGap: Spacing.SingleAndHalf,
 	},
 	chip: {
 		height: Spacing.Sextuple,

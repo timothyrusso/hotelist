@@ -38,6 +38,7 @@ export const useGetHotelsQuery = () => {
 					stars: hotel.stars,
 					price: hotel.price,
 					image: hotel.gallery[0],
+					isFavorite: false,
 				}),
 			),
 			selectHotelById: (id: number) => {

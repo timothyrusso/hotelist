@@ -18,8 +18,8 @@ export type OrderByKeysType = (typeof OrderByKeys)[keyof typeof OrderByKeys];
 
 export const useFilterLogic = () => {
 	const { filtersSelectors, filtersActions } = useFiltersState();
-	const { hotelsActions } = useHotelsState();
-	const { hotelsData, refetch } = useGetHotelsQuery();
+	const { hotelsActions, hotelsSelectors } = useHotelsState();
+	const { refetch } = useGetHotelsQuery();
 	const orderByValue = filtersSelectors.selectedOrderBy();
 
 	const minPrice = filtersSelectors.minPrice();
@@ -27,7 +27,7 @@ export const useFilterLogic = () => {
 
 	const searchedText = filtersSelectors.searchedText();
 
-	const initialHotelsData = hotelsData?.cardList ?? [];
+	const initialHotelsData = hotelsSelectors.hotelsListWithFavorites();
 
 	const isPriceFilterError = filtersSelectors.isPriceFilterError();
 
@@ -134,8 +134,6 @@ export const useFilterLogic = () => {
 		hotelsActions.setFilteredByFiltersOnly(initialHotelsData); // Reset to original data
 
 		refetch(); // Restore the original list order
-
-		router.back();
 	};
 
 	const isFilterApplied = filtersSelectors.isFilterApplied();

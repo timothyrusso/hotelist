@@ -14,6 +14,8 @@ export const HomePageListHeader = () => {
 		showOrderByChip,
 		selectedStars,
 		selectedOrderBy,
+		showPriceChip,
+		selectedPrice,
 	} = useHomePageListHeaderLogic();
 
 	return (
@@ -36,6 +38,9 @@ export const HomePageListHeader = () => {
 						))}
 					{showOrderByChip && (
 						<SearchBarChip value={selectedOrderBy} style={styles.chip} />
+					)}
+					{showPriceChip && (
+						<SearchBarChip value={selectedPrice} style={styles.chip} />
 					)}
 				</View>
 			)}

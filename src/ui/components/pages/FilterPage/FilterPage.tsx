@@ -12,6 +12,7 @@ import { CustomButton } from "../../basic/CustomButton/CustomButton";
 import { CustomButtonType } from "../../basic/CustomButton/CustomButton.types";
 import { FilterItem } from "../../composite/FilterItem/FilterItem";
 import { OrderByItem } from "../../composite/OrderByItem/OrderByItem";
+import { PriceFilter } from "../../composite/PriceFilter/PriceFilter";
 import { useFilterPageLogic } from "./FilterPage.logic";
 
 export const FilterPage = () => {
@@ -51,6 +52,10 @@ export const FilterPage = () => {
 						showIcon
 						onPress={handleStarsPress}
 						selectedData={stars}
+					/>
+					<PriceFilter
+						icon={Icons.euro}
+						title={en.filter_page.price}
 					/>
 					<OrderByItem
 						icon={Icons.list}

@@ -7,6 +7,9 @@ export const initialState: FiltersState = {
 	selectedOrderBy: "",
 	searchedText: "",
 	isFilterApplied: false,
+	minPrice: "",
+	maxPrice: "",
+	isPriceFilterError: false,
 };
 
 export const useFiltersStore = create<FiltersState & FiltersActions>((set) => ({
@@ -23,6 +26,15 @@ export const useFiltersStore = create<FiltersState & FiltersActions>((set) => ({
 		},
 		setIsFilterApplied: (isFilterApplied) => {
 			set({ isFilterApplied });
+		},
+		setMinPrice: (minPrice) => {
+			set({ minPrice });
+		},
+		setMaxPrice: (maxPrice) => {
+			set({ maxPrice });
+		},
+		setIsPriceFilterError: (isPriceFilterError) => {
+			set({ isPriceFilterError });
 		},
 		resetFilters: () => {
 			set(initialState);

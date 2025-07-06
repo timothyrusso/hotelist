@@ -17,6 +17,11 @@ export const en = {
 		hotel_rating_low_to_high: "Hotel Rating: Low to High",
 		place_name_a_to_z: "Place Name: A to Z",
 		place_name_z_to_a: "Place Name: Z to A",
+		from: "From",
+		to: "To",
+		price: "Price",
+		low_price_error: "Low price must be less than high price",
+		high_price_error: "High price must be greater than low price",
 	},
 	hotel_details_page: {
 		night: "night",

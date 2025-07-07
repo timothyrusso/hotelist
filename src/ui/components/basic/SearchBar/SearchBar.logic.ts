@@ -19,12 +19,23 @@ export const useSearchBarLogic = () => {
 
 	const hotelsListWithFavorites = hotelsSelectors.hotelsListWithFavorites();
 
+	const hotelList = hotelsSelectors.hotelsList();
+
+	const showAutocomplete = filtersSelectors.showAutocomplete() && hotelList.length > 0;
+
+
 	const handleChangeText = (text: string) => {
 		setSearchText(text);
 
 		const trimmedText = text.trim();
 
 		filtersActions.setSearchedText(trimmedText);
+
+		if (trimmedText.length > MIN_SEARCH_LENGTH) {
+			filtersActions.setShowAutocomplete(true);
+		} else {
+			filtersActions.setShowAutocomplete(false);
+		}
 
 		// If search is cleared (text too short) → restore previous filtered state
 		if (trimmedText.length <= MIN_SEARCH_LENGTH && !isFilterApplied) {
@@ -48,9 +59,19 @@ export const useSearchBarLogic = () => {
 		hotelsActions.setHotelsList(filteredHotels);
 	};
 
+	const autocompleteData = hotelList.map((hotel) => hotel.name).filter((name) => name.toLowerCase().includes(searchText.toLowerCase()));
+
+	const handleAutocompleteItemClick = (item: string) => {
+		handleChangeText(item);
+		filtersActions.setShowAutocomplete(false);
+	};
+
 	return {
 		searchText,
 		handleChangeText,
 		isLoading,
+		autocompleteData,
+		handleAutocompleteItemClick,
+		showAutocomplete
 	};
 };

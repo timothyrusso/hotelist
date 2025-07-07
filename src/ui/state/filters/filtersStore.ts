@@ -10,6 +10,7 @@ export const initialState: FiltersState = {
 	minPrice: "",
 	maxPrice: "",
 	isPriceFilterError: false,
+	showAutocomplete: false,
 };
 
 export const useFiltersStore = create<FiltersState & FiltersActions>((set) => ({
@@ -35,6 +36,9 @@ export const useFiltersStore = create<FiltersState & FiltersActions>((set) => ({
 		},
 		setIsPriceFilterError: (isPriceFilterError) => {
 			set({ isPriceFilterError });
+		},
+		setShowAutocomplete: (showAutocomplete) => {
+			set({ showAutocomplete });
 		},
 		resetFilters: () => {
 			set(initialState);

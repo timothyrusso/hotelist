@@ -8,6 +8,7 @@ export type FiltersState = {
 	minPrice: string;
 	maxPrice: string;
 	isPriceFilterError: boolean;
+	showAutocomplete: boolean;
 };
 
 export type FiltersActions = {
@@ -19,6 +20,7 @@ export type FiltersActions = {
 		setMinPrice: (minPrice: string) => void;
 		setMaxPrice: (maxPrice: string) => void;
 		setIsPriceFilterError: (isPriceFilterError: boolean) => void;
+		setShowAutocomplete: (showAutocomplete: boolean) => void;
 		resetFilters: () => void;
 	};
 };

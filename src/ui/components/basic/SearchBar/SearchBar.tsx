@@ -4,12 +4,13 @@ import { Icons } from "@/src/ui/constants/style/Icons";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
 import Fontisto from "@expo/vector-icons/Fontisto";
 import { TextInput, View } from "react-native";
+import { AutocompleteBox } from "../AutocompleteBox/AutocompleteBox";
 import { CloseButton } from "../CloseButton/CloseButton";
 import { useSearchBarLogic } from "./SearchBar.logic";
 import { styles } from "./SearchBar.style";
 
 export const SearchBar = () => {
-	const { searchText, handleChangeText, isLoading } = useSearchBarLogic();
+	const { searchText, handleChangeText, isLoading, autocompleteData, handleAutocompleteItemClick, showAutocomplete } = useSearchBarLogic();
 
 	return (
 		<View style={styles.container}>
@@ -34,6 +35,7 @@ export const SearchBar = () => {
 					style={styles.closeButton}
 				/>
 			)}
+			{showAutocomplete && <AutocompleteBox data={autocompleteData} onPress={handleAutocompleteItemClick} />}
 		</View>
 	);
 };

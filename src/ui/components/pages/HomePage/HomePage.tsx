@@ -18,14 +18,14 @@ const RenderItem = ({ item }: { item: HotelCardItem | UniqueItem }) => {
 	const isSkeleton = "uuid" in item;
 	return (
 		<View style={styles.hotelCard}>
-		{isSkeleton ? (
-		<HotelCardSkeleton />
-	) : (
-		<HotelCard hotel={item} />
-	)}
-	</View>
+			{isSkeleton ? (
+				<HotelCardSkeleton />
+			) : (
+				<HotelCard hotel={item} />
+			)}
+		</View>
 	)
-	
+
 };
 
 export const HomePage = () => {

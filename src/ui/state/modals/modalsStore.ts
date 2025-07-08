@@ -21,7 +21,14 @@ export const useModalsStore = create<ModalsState & ModalsActions>((set, get) => 
 		},
 		nextImage: () => {
 			const { imageModal } = get();
-			const nextIndex = (imageModal.currentIndex + 1) % imageModal.images.length;
+			// Circular array pattern
+			// If the current index is the last index, the next index should be the first index
+			// How it works:
+			// 1. currentIndex + 1 = 1
+			// 2. 1 % 3 = 1
+			// 3. nextIndex = 1
+			// 4. imageModal.images[1] = imageModal.images[1]
+			const nextIndex = (imageModal.currentIndex + 1) % imageModal.images.length; 
 			set({
 				imageModal: {
 					...imageModal,

@@ -19,7 +19,7 @@ type GalleryProps = {
 const separator = () => <View style={styles.separator} />;
 
 export const Gallery: FC<GalleryProps> = ({ images, style }) => {
-	const { openImageModal } = useGalleryLogic();
+	const { openImageModal } = useGalleryLogic(images);
 
 	const renderItem = ({ item }: { item: string }) => (
 		<Pressable

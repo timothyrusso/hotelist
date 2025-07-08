@@ -11,6 +11,7 @@ export const Icons = {
 	filter: "filter",
 	list: "list-2",
 	angleLeft: "angle-left",
+	angleRight: "angle-right",
 	mapMarker: "map-marker-alt",
 	clock: "clock",
 	email: "email",

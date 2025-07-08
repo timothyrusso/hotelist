@@ -1,13 +1,13 @@
+import Fontisto from "@expo/vector-icons/Fontisto";
+import { Image } from "expo-image";
+import { Fragment } from "react";
+import { Animated, ScrollView, Text, View } from "react-native";
 import { en } from "@/src/modules/localization/locales/en";
 import { BasicView } from "@/src/ui/components/basic/BasicView/BasicView";
 import { Screens } from "@/src/ui/constants/navigation/Routes";
 import { Colors } from "@/src/ui/constants/style/Colors";
 import { Icons } from "@/src/ui/constants/style/Icons";
 import { Spacing } from "@/src/ui/constants/style/Spacing";
-import Fontisto from "@expo/vector-icons/Fontisto";
-import { Image } from "expo-image";
-import { Fragment } from "react";
-import { ScrollView, Text, View } from "react-native";
 import { Chip } from "../../basic/Chip/Chip";
 import { CustomButton } from "../../basic/CustomButton/CustomButton";
 import { DateCard } from "../../basic/DateCard/DateCard";
@@ -15,7 +15,12 @@ import { FilterTitle } from "../../basic/FilterTitle/FilterTitle";
 import { Gallery } from "../../basic/Gallery/Gallery";
 import { IconButton } from "../../basic/IconButton/IconButton";
 import { StarsList } from "../../basic/StarsList/StarsList";
-import { useHotelDetailsPageLogic } from "./HotelDetailsPage.logic";
+import {
+	END_ICON_SIZE,
+	INTERPOLATED_ICON_OUTPUT_RANGE,
+	START_ICON_SIZE,
+	useHotelDetailsPageLogic,
+} from "./HotelDetailsPage.logic";
 
 export const HotelDetailsPage = () => {
 	const {
@@ -33,6 +38,7 @@ export const HotelDetailsPage = () => {
 		mainImage,
 		isFavorite,
 		handleFavoritePress,
+		animatedIconSize,
 	} = useHotelDetailsPageLogic();
 
 	return (
@@ -50,13 +56,28 @@ export const HotelDetailsPage = () => {
 							style={styles.leftIconButton}
 							iconSize={Spacing.Fourfold}
 						/>
-						<IconButton
-							icon={isFavorite ? Icons.heart : Icons.heartOutline}
-							onPress={handleFavoritePress}
-							style={styles.rightIconButton}
-							iconSize={Spacing.Fourfold}
-							iconType="ionicons"
-						/>
+						<Animated.View
+							style={[
+								styles.rightIconButton,
+								{
+									transform: [
+										{
+											scale: animatedIconSize.interpolate({
+												inputRange: [START_ICON_SIZE, END_ICON_SIZE],
+												outputRange: [1, INTERPOLATED_ICON_OUTPUT_RANGE],
+											}),
+										},
+									],
+								},
+							]}
+						>
+							<IconButton
+								icon={isFavorite ? Icons.heart : Icons.heartOutline}
+								onPress={handleFavoritePress}
+								iconSize={Spacing.Fourfold}
+								iconType="ionicons"
+							/>
+						</Animated.View>
 						<Chip
 							label={chipLabel}
 							style={styles.chip}

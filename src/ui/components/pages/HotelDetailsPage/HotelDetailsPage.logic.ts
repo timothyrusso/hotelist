@@ -1,28 +1,52 @@
+import { router, useLocalSearchParams } from "expo-router";
+import { useRef, useState } from "react";
+import { Animated, Linking } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { en } from "@/src/modules/localization/locales/en";
 import { useGetHotelsQuery } from "@/src/ui/query/hotels/queries/useGetHotelsQuery";
 import { useHotelsState } from "@/src/ui/state/hotels";
-import { router, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
-import { Linking } from "react-native";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { styles as hotelDetailsPageStyles } from "./HotelDetailsPage.style";
+
+export const START_ICON_SIZE = 24;
+export const END_ICON_SIZE = 32;
+export const INTERPOLATED_ICON_OUTPUT_RANGE = 1.33;
+const DURATION = 100;
 
 export const useHotelDetailsPageLogic = () => {
 	const { bottom, top } = useSafeAreaInsets();
 
+	const animatedIconSize = useRef(new Animated.Value(START_ICON_SIZE)).current;
+
+	const handleIconAnimation = () => {
+		Animated.sequence([
+			Animated.timing(animatedIconSize, {
+				toValue: END_ICON_SIZE,
+				duration: DURATION,
+				useNativeDriver: false,
+			}),
+			Animated.timing(animatedIconSize, {
+				toValue: START_ICON_SIZE,
+				duration: DURATION,
+				useNativeDriver: false,
+			}),
+		]).start();
+	};
+
 	const { id } = useLocalSearchParams();
-	
+
 	const { hotelsActions } = useHotelsState();
 
 	const isHotelFavorite = hotelsActions.getHotelById(Number(id))?.isFavorite;
 
 	const [imageError, setImageError] = useState<boolean>(false);
-	const [isFavorite, setIsFavorite] = useState<boolean>(isHotelFavorite ?? false);
-
+	const [isFavorite, setIsFavorite] = useState<boolean>(
+		isHotelFavorite ?? false,
+	);
 
 	const { hotelsData } = useGetHotelsQuery();
 
 	const handleFavoritePress = () => {
+		handleIconAnimation();
 		setIsFavorite(!isFavorite);
 		hotelsActions.setIsFavorite(Number(id), !isFavorite);
 	};
@@ -65,5 +89,6 @@ export const useHotelDetailsPageLogic = () => {
 		mainImage: hotelsPageData?.gallery[0],
 		isFavorite,
 		handleFavoritePress,
+		animatedIconSize,
 	};
 };

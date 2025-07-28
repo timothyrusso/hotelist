@@ -16,7 +16,16 @@ const Separator = () => <View style={styles.separator} />;
 
 const RenderItem = ({ item }: { item: HotelCardItem | UniqueItem }) => {
 	const isSkeleton = "uuid" in item;
-	return isSkeleton ? <HotelCardSkeleton /> : <HotelCard hotel={item} />;
+	return (
+		<View style={styles.hotelCard}>
+			{isSkeleton ? (
+				<HotelCardSkeleton />
+			) : (
+				<HotelCard hotel={item} />
+			)}
+		</View>
+	)
+
 };
 
 export const HomePage = () => {
@@ -34,6 +43,7 @@ export const HomePage = () => {
 					style={styles.listContainer}
 					ListHeaderComponent={<HomePageListHeader />}
 					ListEmptyComponent={<EmptyList showEmptyList={showEmptyList} />}
+					stickyHeaderIndices={[0]}
 				/>
 				<Toast />
 			</Fragment>

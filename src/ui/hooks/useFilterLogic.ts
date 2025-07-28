@@ -18,13 +18,18 @@ export type OrderByKeysType = (typeof OrderByKeys)[keyof typeof OrderByKeys];
 
 export const useFilterLogic = () => {
 	const { filtersSelectors, filtersActions } = useFiltersState();
-	const { hotelsActions } = useHotelsState();
-	const { hotelsData, refetch } = useGetHotelsQuery();
+	const { hotelsActions, hotelsSelectors } = useHotelsState();
+	const { refetch } = useGetHotelsQuery();
 	const orderByValue = filtersSelectors.selectedOrderBy();
+
+	const minPrice = filtersSelectors.minPrice();
+	const maxPrice = filtersSelectors.maxPrice();
 
 	const searchedText = filtersSelectors.searchedText();
 
-	const initialHotelsData = hotelsData?.cardList ?? [];
+	const initialHotelsData = hotelsSelectors.hotelsListWithFavorites();
+
+	const isPriceFilterError = filtersSelectors.isPriceFilterError();
 
 	const orderHotelsByKey = (
 		hotelsList: HotelCardItem[],
@@ -81,6 +86,12 @@ export const useFilterLogic = () => {
 			);
 		}
 
+		if (minPrice !== "" && maxPrice !== "") {
+			filteredByFiltersOnly = filteredByFiltersOnly.filter((hotel) =>
+				hotel.price >= Number(minPrice) && hotel.price <= Number(maxPrice),
+			);
+		}
+
 		if (orderByValue !== "") {
 			filteredByFiltersOnly = orderHotelsByKey(
 				filteredByFiltersOnly,
@@ -97,7 +108,10 @@ export const useFilterLogic = () => {
 		}
 
 		// Update filter applied state
-		const hasFilters = filteredStars.length > 0 || orderByValue !== "";
+		const hasFilters =
+			filteredStars.length > 0 ||
+			orderByValue !== "" ||
+			(minPrice !== "" && maxPrice !== "");
 		filtersActions.setIsFilterApplied(hasFilters);
 
 		// Save both states correctly
@@ -120,15 +134,19 @@ export const useFilterLogic = () => {
 		hotelsActions.setFilteredByFiltersOnly(initialHotelsData); // Reset to original data
 
 		refetch(); // Restore the original list order
-
-		router.back();
 	};
 
 	const isFilterApplied = filtersSelectors.isFilterApplied();
 
+
 	const disableResetButton = !isFilterApplied;
 	const disableApplyButton =
-		filteredStars.length === 0 && orderByValue === "" && !isFilterApplied;
+		filteredStars.length === 0 &&
+		orderByValue === "" &&
+		(minPrice === "" ||
+			maxPrice === "") &&
+		!isFilterApplied ||
+		isPriceFilterError;
 
 	return {
 		applyFilters,

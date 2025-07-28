@@ -5,4 +5,5 @@ export interface HotelCardItem {
 	stars: number;
 	price: number;
 	image: string;
+	isFavorite?: boolean;
 }

@@ -5,6 +5,10 @@ export type FiltersState = {
 	selectedOrderBy: OrderByKeysType;
 	searchedText: string;
 	isFilterApplied: boolean;
+	minPrice: string;
+	maxPrice: string;
+	isPriceFilterError: boolean;
+	showAutocomplete: boolean;
 };
 
 export type FiltersActions = {
@@ -13,6 +17,10 @@ export type FiltersActions = {
 		setSelectedOrderBy: (selectedOrderBy: OrderByKeysType) => void;
 		setSearchedText: (searchedText: string) => void;
 		setIsFilterApplied: (isFilterApplied: boolean) => void;
+		setMinPrice: (minPrice: string) => void;
+		setMaxPrice: (maxPrice: string) => void;
+		setIsPriceFilterError: (isPriceFilterError: boolean) => void;
+		setShowAutocomplete: (showAutocomplete: boolean) => void;
 		resetFilters: () => void;
 	};
 };

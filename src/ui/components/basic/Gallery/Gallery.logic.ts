@@ -1,10 +1,11 @@
 import { useModalsState } from "@/src/ui/state/modals";
 
-export const useGalleryLogic = () => {
+export const useGalleryLogic = (images: string[]) => {
 	const { modalsActions } = useModalsState();
 
 	const openImageModal = (image: string) => {
-		modalsActions.showImageModal(image);
+		const currentIndex = images.indexOf(image);
+		modalsActions.showImageModal(image, images, currentIndex);
 	};
 
 	return {

@@ -1,5 +1,5 @@
-import { Spacing } from "@/src/ui/constants/style/Spacing";
 import { StyleSheet } from "react-native";
+import { Spacing } from "@/src/ui/constants/style/Spacing";
 
 export const styles = StyleSheet.create({
 	modalOverlay: {
@@ -22,5 +22,15 @@ export const styles = StyleSheet.create({
 		width: "100%",
 		height: "100%",
 		borderRadius: Spacing.Fourfold,
+	},
+	iconButtonLeft: {
+		position: "absolute",
+		left: Spacing.Double,
+		zIndex: 1,
+	},
+	iconButtonRight: {
+		position: "absolute",
+		right: Spacing.Double,
+		zIndex: 1,
 	},
 });

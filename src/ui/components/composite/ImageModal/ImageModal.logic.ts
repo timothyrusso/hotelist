@@ -7,9 +7,19 @@ export const useImageModal = () => {
 		modalsActions.hideImageModal();
 	};
 
+	const handleNextImage = () => {
+		modalsActions.nextImage();
+	};
+
+	const handlePreviousImage = () => {
+		modalsActions.previousImage();
+	};
+
 	return {
 		closeImageModal,
 		isModalVisible: modalsSelectors.imageModal().visible,
 		selectedImage: modalsSelectors.imageModal().image,
+		handleNextImage,
+		handlePreviousImage,
 	};
 };
